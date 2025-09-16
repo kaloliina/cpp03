@@ -5,11 +5,11 @@ ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackD
 	std::cout << "Default Constructor called!" << std::endl;
 }
 
+/*Name could be in the initializer list*/
 ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	this->name = name;
-	//Name could also be added to the initializer list?
-	std::cout << "A wild ClapTrap has been summoned!" << std::endl;
+	std::cout << "Parameterized Constructor called!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy)
@@ -21,8 +21,6 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
 	this->attackDamage = copy.attackDamage;
 }
 
-/*It checks if the current object (this) and the source object (other) are not the same object in memory.
-To avoid deletions or errors...*/
 ClapTrap& ClapTrap::operator=(const ClapTrap &src)
 {
 	std::cout << "Copy Assignment called!" << std::endl;
@@ -38,9 +36,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &src)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap disappeared into the depths of abyss." << std::endl;
+	std::cout << "Destructor called!" << std::endl;
 }
 
+/*
+- Hit point refers to health
+- Energy points is energy
+*/
 void ClapTrap::attack(const std::string& target)
 {
 	if (energyPoints <= 0)
@@ -67,9 +69,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 	std::cout << "ClapTrap " << name << " took " << amount << " points of damage." << std::endl;
 }
 
-/*
-- Hit point refers to health
-- Energy points is energy*/
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (energyPoints <= 0)
@@ -84,7 +83,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	energyPoints = energyPoints - 1;
 	hitPoints = hitPoints + amount;
-	std::cout << "ClapTrap " << name << " returns to its den and licks its wounds." << std::endl;
+	std::cout << "ClapTrap " << name << " returns to its den to licks its wounds, gaining " << amount << " health points back." << std::endl;
 }
-/*Is there a better way to print the messages, it feels weird that the strings need to be divided with
-<< ...*/

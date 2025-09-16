@@ -6,23 +6,22 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->energyPoints = 50;
 	this->attackDamage = 20;
 	this->isGuarding = false;
-	std::cout << "Default ScavTrap Constructor called!" << std::endl;
+	std::cout << "ScavTrap Default Constructor called!" << std::endl;
 }
 
-/*So this uses the constructor but then overwrites the information with scavtraps info?*/
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
 	this->isGuarding = false;
-	std::cout << "A wild ScavTrap has been summoned!" << std::endl;
+	std::cout << "ScavTrap Parameterized Constructor called!" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
 	this->isGuarding = false;
-	std::cout << "ScavTrap Copy Constructor called!" << std::endl;
+	std::cout << "ClapTrap Copy Constructor called!" << std::endl;
 }
 
 /*It checks if the current object (this) and the source object (other) are not the same object in memory.
