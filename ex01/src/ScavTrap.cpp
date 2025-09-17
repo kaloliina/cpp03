@@ -21,31 +21,23 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
 	this->isGuarding = false;
-	std::cout << "ClapTrap Copy Constructor called!" << std::endl;
+	std::cout << "ScavTrap Copy Constructor called!" << std::endl;
 }
 
-/*It checks if the current object (this) and the source object (other) are not the same object in memory.
-To avoid deletions or errors...
-//So here we dont refer to the ClapTrap because we are dealing with already existing object..?
-Might be good to practise the copy and copy assignment
-And I guess we don't have to put isGuarding here to false because this object already exists
-and should have it set already!*/
 ScavTrap& ScavTrap::operator=(const ScavTrap &src)
 {
-	std::cout << "Copy Assignment called!" << std::endl;
+	std::cout << "ScavTrap Copy Assignment called!" << std::endl;
 	if (this != &src)
 	{
-		this->name = src.name;
-		this->hitPoints = src.hitPoints;
-		this->energyPoints = src.energyPoints;
-		this->attackDamage = src.attackDamage;		
+		ClapTrap::operator=(src);
+		this->isGuarding = false;
 	}
 	return *this;
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap disappeared into the depths of abyss." << std::endl;
+	std::cout << "ScavTrap Destructor called!" << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target)
@@ -90,5 +82,3 @@ void ScavTrap::guardGate()
 	isGuarding = true;
 	std::cout << "ScavTrap " << name << " begins to guard the gate!" << std::endl;
 }
-/*Is there a better way to print the messages, it feels weird that the strings need to be divided with
-<< ...*/

@@ -1,6 +1,7 @@
 #include "../include/ClapTrap.hpp"
 #include "../include/ScavTrap.hpp"
 //Create better tests for this
+//Also pretty confused why the correct attack function works because shouldnt the base function be virtual?
 int main(void)
 {
 	ClapTrap ClapTrap1("Traps");
