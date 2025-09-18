@@ -42,6 +42,11 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::attack(const std::string& target)
 {
+	if (hitPoints <= 0)
+	{
+		std::cout << "ScavTrap " << name << " cannot attack because they are dead!" << std::endl;
+		return ;
+	}
 	if (isGuarding == true)
 	{
 		std::cout << "ScavTrap " << name << " cannot attack when its sole focus is on guarding the gate!" << std::endl;
@@ -50,11 +55,6 @@ void ScavTrap::attack(const std::string& target)
 	if (energyPoints <= 0)
 	{
 		std::cout << "ScavTrap " << name << " cannot attack because they ran out of energy!" << std::endl;
-		return ;
-	}
-	if (hitPoints <= 0)
-	{
-		std::cout << "ScavTrap " << name << " cannot attack because they are dead!" << std::endl;
 		return ;
 	}
 	energyPoints = energyPoints - 1;
